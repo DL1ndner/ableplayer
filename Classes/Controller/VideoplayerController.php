@@ -1,17 +1,19 @@
 <?php
+
+
 /**
- * Html5VideoPlayer Controller
+ * AblePlayer Controller
  *
  * @category   Extension
- * @package    Html5videoplayer
+ * @package    Ableplayer
  * @subpackage Controller
- * @author     Tim Lochmüller <tim@fruit-lab.de>
+ * @author     Dominik Lindner <dominik.lindner@bzga.de>
  */
 
-namespace HVP\Html5videoplayer\Controller;
+namespace BZGA\Ableplayer\Controller;
 
-use HVP\Html5videoplayer\Div;
-use HVP\Html5videoplayer\Domain\Model\Video;
+use BZGA\Ableplayer\Div;
+use BZGA\Ableplayer\Domain\Model\Video;
 use TYPO3\CMS\Core\Database\DatabaseConnection;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -24,9 +26,9 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 /**
  * Abstract Command Controller
  *
- * @package    Html5videoplayer
+ * @package    Ableplayer
  * @subpackage Controller
- * @author     Tim Lochmüller <tim@fruit-lab.de>
+ * @author     Dominik Lindner <dominik.lindner@bzga.de>
  */
 class VideoplayerController extends ActionController
 {
@@ -34,12 +36,12 @@ class VideoplayerController extends ActionController
     /**
      * The current Video JS Version
      */
-    const VIDEO_JS_VERSION = '6.2.8';
+    const JQUERY_JS_VERSION = '1.9.1';
 
     /**
      * The video repository
      *
-     * @var \HVP\Html5videoplayer\Domain\Repository\VideoRepository
+     * @var \BZGA\Ableplayer\Domain\Repository\VideoRepository
      * @inject
      */
     protected $videoRepository;
@@ -79,8 +81,8 @@ class VideoplayerController extends ActionController
         }
 
         // Check Static include
-        if (!@is_array($typoScript['plugin.']['tx_html5videoplayer.']['view.'])) {
-            die('HTML5 Video Player: You have to include the static extension Template of the html5videoplayer.');
+        if (!@is_array($typoScript['plugin.']['tx_ableplayer.']['view.'])) {
+            die('HTML5 Video Player: You have to include the static extension Template of the ableplayer.');
         }
     }
 
@@ -153,7 +155,7 @@ class VideoplayerController extends ActionController
                     ->uriFor('detail', $arguments);
                 if ($this->settings['skipOverviewMode'] == 'forward') {
                     $this->getTyposcriptFrontendController()
-                        ->set_no_cache('HTML5VideoPlayer is in forward mode in the overview');
+                        ->set_no_cache('AblePlayer is in forward mode in the overview');
                     $this->forward('detail', null, null, $arguments);
                 } else {
                     HttpUtility::redirect($uri);
@@ -242,20 +244,27 @@ class VideoplayerController extends ActionController
         if (!self::$includeHeader && $this->settings['skipHtmlHeaderInformation'] != 1) {
             $folder = $this->getResourceFolder();
 
-            $css = $folder . 'video-js-' . self::VIDEO_JS_VERSION . '/video-js.min.css';
-            $javaScript = $folder . 'video-js-' . self::VIDEO_JS_VERSION . '/video.min.js';
-
+           // $css = $folder . 'video-js-' . self::VIDEO_JS_VERSION . '/video-js.min.css';
+	    $css = $folder . 'build' . '/ableplayer.min.css';
+           // $javaScript = $folder . 'video-js-' . self::VIDEO_JS_VERSION . '/video.min.js';
+	    $javaScript = $folder . 'build' . '/ableplayer.js';
+	    $jquery = '';
             if (isset($this->settings['videoJsCdn']) && $this->settings['videoJsCdn']) {
-                $css = '//vjs.zencdn.net/' . self::VIDEO_JS_VERSION . '/video-js.css';
-                $javaScript = '//vjs.zencdn.net/' . self::VIDEO_JS_VERSION . '/video.js';
+             
+                $jquery = '//ajax.googleapis.com/ajax/libs/jquery/' . self::JQUERY_JS_VERSION . '/jquery.min.js';
             }
 
-            $this->addHeader('<link href="' . $css . '" type="text/css" rel="stylesheet" media="screen" />');
+	    $this->addHeader('<script src="' . $folder . 'thirdparty/modernizr.custom.js" type="text/javascript"></script>'); 
+            $this->addHeader('<script src="' . $jquery . '" type="text/javascript"></script>');
+            $this->addHeader('<script src="' . $folder . 'thirdparty/js.cookie.js" type="text/javascript"></script>');
+	    $this->addHeader('<link href="' . $css . '" type="text/css" rel="stylesheet" media="screen" />'); 
+           
             $this->addHeader('<script src="' . $javaScript . '" type="text/javascript"></script>');
-            $this->addHeader('<script src="' . $folder . 'videojs-youtube-2.4.1/dist/Youtube.min.js" type="text/javascript"></script>');
-            if (Div::featureEnable('vimeo')) {
-                $this->addHeader('<script src="' . $folder . 'videojs-vimeo-master-2017-09-11/dist/videojs-vimeo.min.js" type="text/javascript"></script>');
-            }
+
+            //$this->addHeader('<script src="' . $folder . 'videojs-youtube-2.4.1/dist/Youtube.min.js" type="text/javascript"></script>');
+            //if (Div::featureEnable('vimeo')) {
+            //    $this->addHeader('<script src="' . $folder . 'videojs-vimeo-master-2017-09-11/dist/videojs-vimeo.min.js" type="text/javascript"></script>');
+            //}
         }
 
         self::$includeHeader = true;
@@ -303,7 +312,7 @@ class VideoplayerController extends ActionController
     {
         $uids = [];
         $res = $this->getDatabase()
-            ->exec_SELECTquery('video_uid', 'tx_html5videoplayer_video_content', 'content_uid=' . intval($uid), '', 'sorting');
+            ->exec_SELECTquery('video_uid', 'tx_ableplayer_video_content', 'content_uid=' . intval($uid), '', 'sorting');
         while ($row = $this->getDatabase()
             ->sql_fetch_assoc($res)) {
             $uids[] = (int)$row['video_uid'];

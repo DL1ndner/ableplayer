@@ -1,7 +1,7 @@
 #
-# Table structure for table 'tx_html5videoplayer_domain_model_video'
+# Table structure for table 'tx_ableplayer_domain_model_video'
 #
-CREATE TABLE tx_html5videoplayer_domain_model_video (
+CREATE TABLE tx_ableplayer_domain_model_video (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 	tstamp int(11) DEFAULT '0' NOT NULL,
@@ -17,11 +17,12 @@ CREATE TABLE tx_html5videoplayer_domain_model_video (
 	endtime int(11) DEFAULT '0' NOT NULL,
 	fe_group tinytext,
 	title tinytext,
-	description text,
+	description tinytext,
 	posterimage tinytext,
 	mp4source tinytext,
 	webmsource tinytext,
 	oggsource tinytext,
+	caption tinytext,
 	youtube tinytext,
 	vimeo tinytext,
 	height tinytext,
@@ -43,14 +44,14 @@ CREATE TABLE tx_html5videoplayer_domain_model_video (
 # Table structure for table 'tt_content'
 #
 CREATE TABLE tt_content (
-	tx_html5videoplayer_videos text
+	tx_ableplayer_videos text
 );
 
 
 #
-# Table structure for table 'tx_html5videoplayer_video_content'
+# Table structure for table 'tx_ableplayer_video_content'
 #
-CREATE TABLE tx_html5videoplayer_video_content (
+CREATE TABLE tx_ableplayer_video_content (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 	tstamp int(11) DEFAULT '0' NOT NULL,

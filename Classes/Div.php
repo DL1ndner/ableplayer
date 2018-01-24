@@ -1,16 +1,16 @@
 <?php
 /**
- * Class Tx_Html5videoplayer_Div
+ * Class Tx_Ableplayer_Div
  */
 
-namespace HVP\Html5videoplayer;
+namespace BZGA\Ableplayer;
 
 use TYPO3\CMS\Core\Database\DatabaseConnection;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * Class Tx_Html5videoplayer_Div
+ * Class Tx_Ableplayer_Div
  */
 class Div
 {
@@ -26,7 +26,7 @@ class Div
      */
     public function processDatamap_postProcessFieldArray($status, $table, $id, &$fieldArray, &$obj)
     {
-        if ($table != 'tx_html5videoplayer_domain_model_video') {
+        if ($table != 'tx_ableplayer_domain_model_video') {
             return;
         }
 
@@ -34,8 +34,8 @@ class Div
         $res = $this->getDatabase()
             ->exec_SELECTquery(
                 'tt_content.*',
-                'tt_content,tx_html5videoplayer_video_content',
-                'tt_content.uid=tx_html5videoplayer_video_content.content_uid AND tx_html5videoplayer_video_content.video_uid=' . intval($id)
+                'tt_content,tx_ableplayer_video_content',
+                'tt_content.uid=tx_ableplayer_video_content.content_uid AND tx_ableplayer_video_content.video_uid=' . intval($id)
             );
         $pages = [];
         while ($row = $this->getDatabase()
@@ -86,11 +86,11 @@ class Div
      */
     public static function getConfigurationValue($key)
     {
-        if (!isset($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['html5videoplayer'])) {
+        if (!isset($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['ableplayer'])) {
             return 0;
         }
 
-        $config = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['html5videoplayer']);
+        $config = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['ableplayer']);
         return intval($config[$key]);
     }
 

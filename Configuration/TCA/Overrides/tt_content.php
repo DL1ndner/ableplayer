@@ -1,12 +1,12 @@
 <?php
 
 // column
-$GLOBALS['TCA']['tt_content']['columns']['tx_html5videoplayer_videos'] = [
+$GLOBALS['TCA']['tt_content']['columns']['tx_ableplayer_videos'] = [
     'exclude' => 0,
-    'label'   => 'LLL:EXT:html5videoplayer/Resources/Private/Language/locallang.xml:videos',
+    'label'   => 'LLL:EXT:ableplayer/Resources/Private/Language/locallang.xml:videos',
     'config'  => [
         'type'             => 'inline',
-        'foreign_table'    => 'tx_html5videoplayer_video_content',
+        'foreign_table'    => 'tx_ableplayer_video_content',
         'foreign_field'    => 'content_uid',
         'foreign_label'    => 'video_uid',
         'foreign_sortby'   => 'sorting',
@@ -31,11 +31,11 @@ $GLOBALS['TCA']['tt_content']['columns']['tx_html5videoplayer_videos'] = [
     ],
 ];
 
-$storageId = \HVP\Html5videoplayer\Div::getGeneralStorageFolder();
+$storageId = \BZGA\Ableplayer\Div::getGeneralStorageFolder();
 if ($storageId) {
-    unset($GLOBALS['TCA']['tt_content']['columns']['tx_html5videoplayer_videos']['config']['foreign_selector']);
-    unset($GLOBALS['TCA']['tt_content']['columns']['tx_html5videoplayer_videos']['config']['foreign_unique']);
+    unset($GLOBALS['TCA']['tt_content']['columns']['tx_ableplayer_videos']['config']['foreign_selector']);
+    unset($GLOBALS['TCA']['tt_content']['columns']['tx_ableplayer_videos']['config']['foreign_unique']);
 }
 
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['html5videoplayer_pivideoplayer'] = 'layout,select_key,pages,recursive';
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['html5videoplayer_pivideoplayer'] = 'pi_flexform,tx_html5videoplayer_videos';
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['ableplayer_pivideoplayer'] = 'layout,select_key,pages,recursive';
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['ableplayer_pivideoplayer'] = 'pi_flexform,tx_ableplayer_videos';

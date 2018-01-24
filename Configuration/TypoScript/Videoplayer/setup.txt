@@ -1,46 +1,49 @@
 # Plugin configuration
-plugin.tx_html5videoplayer {
+plugin.tx_ableplayer {
 
 	settings {
-		skipOverview = {$plugin.html5videoplayer.skipOverview}
-		skipOverviewMode = {$plugin.html5videoplayer.skipOverviewMode}
-		videoJsCdn = {$plugin.html5videoplayer.videoJsCdn}
-		listThumbWidth = {$plugin.html5videoplayer.listThumbWidth}
-		listThumbHeight = {$plugin.html5videoplayer.listThumbHeight}
-		listThumbMode = {$plugin.html5videoplayer.listThumbMode}
-		listThumbTeaser = {$plugin.html5videoplayer.listThumbTeaser}
-		resourceFolder = {$plugin.html5videoplayer.resourceFolder}
-		activePosition = {$plugin.html5videoplayer.activePosition}
-		skipHtmlHeaderInformation = {$plugin.html5videoplayer.skipHtmlHeaderInformation}
+		skipOverview = {$plugin.ableplayer.skipOverview}
+		skipOverviewMode = {$plugin.ableplayer.skipOverviewMode}
+		videoJsCdn = {$plugin.ableplayer.videoJsCdn}
+		listThumbWidth = {$plugin.ableplayer.listThumbWidth}
+		listThumbHeight = {$plugin.ableplayer.listThumbHeight}
+		listThumbMode = {$plugin.ableplayer.listThumbMode}
+		listThumbTeaser = {$plugin.ableplayer.listThumbTeaser}
+		resourceFolder = {$plugin.ableplayer.resourceFolder}
+		activePosition = {$plugin.ableplayer.activePosition}
+		skipHtmlHeaderInformation = {$plugin.ableplayer.skipHtmlHeaderInformation}
 	}
 
 	persistence {
-		storagePid = {$plugin.html5videoplayer.persistence.storagePid}
+		storagePid = {$plugin.ableplayer.persistence.storagePid}
 	}
 
 	view {
 		templateRootPaths {
-			0 = EXT:html5videoplayer/Resources/Private/Templates/
-			10 = {$plugin.html5videoplayer.view.templateRootPath}
+			0 = EXT:ableplayer/Resources/Private/Templates/
+			10 = {$plugin.ableplayer.view.templateRootPath}
 		}
 
 		partialRootPaths {
-			0 = EXT:html5videoplayer/Resources/Private/Partials/
-			10 = {$plugin.html5videoplayer.view.partialRootPath}
+			0 = EXT:ableplayer/Resources/Private/Partials/
+			10 = {$plugin.ableplayer.view.partialRootPath}
 		}
 
 		layoutRootPaths {
-			0 = EXT:html5videoplayer/Resources/Private/Layouts/
-			10 = {$plugin.html5videoplayer.view.layoutRootPath}
+			0 = EXT:ableplayer/Resources/Private/Layouts/
+			10 = {$plugin.ableplayer.view.layoutRootPath}
 		}
 	}
 }
 
-
-# if you use skipHtmlHeaderInformation you can set the required files by yourself
+# We use JQuery 1.9.1 from googleapis.com as standard. If you allready have JQuery included (e.g. t3_jquery), set videoJsCdn = 0
+# If you want to manually use a local version of JQuery, additionally set skipHtmlHeaderInformation = 1 and set the required file(s) by yourself,
 # Example:
-#page.includeCSS.html5videoplayer = //vjs.zencdn.net/5.14.1/video-js.css
-#page.includeJS.html5videoplayer = //vjs.zencdn.net/5.14.1/video.js
-#page.includeJS.html5videoplayer.external = 1
-#page.includeJS.html5videoplayerYouTube = EXT:html5videoplayer/Resources/Public/videojs-youtube-2.2.0/dist/Youtube.min.js
-#page.includeJS.html5videoplayerVimeo = EXT:html5videoplayer/Resources/Public/videojs-vimeo-2.0.2/src/Vimeo.js
+
+#page.includeJS.modernizer = EXT:ableplayer/Resources/Public/thirdparty/modernizr.custom.js
+#page.includeJS.jquery = fileadmin/my/path/to/jquery/1.9.1/jquery.min.js
+#page.includeJS.cookie = EXT:ableplayer/Resources/Public/thirdparty/js.cookie.js
+#page.includeCSS.ableplayer = EXT:ableplayer/Resources/Public/build/ableplayer.min.css
+#page.includeJS.ableplayer = EXT:ableplayer/Resources/Public/build/ableplayer.js
+#page.includeJS.ableplayerYouTube = EXT:ableplayer/Resources/Public/videojs-youtube-2.2.0/dist/Youtube.min.js
+#page.includeJS.ableplayerVimeo = EXT:ableplayer/Resources/Public/videojs-vimeo-2.0.2/src/Vimeo.js

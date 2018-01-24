@@ -1,6 +1,6 @@
 <?php
 
-namespace HVP\Html5videoplayer\ViewHelpers;
+namespace BZGA\Ableplayer\ViewHelpers;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;

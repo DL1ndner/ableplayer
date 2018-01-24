@@ -1,6 +1,6 @@
 <?php
 
-namespace HVP\Html5videoplayer;
+namespace BZGA\Ableplayer;
 
 /* * *************************************************************
  *  Copyright notice
@@ -34,7 +34,7 @@ use TYPO3\CMS\Lang\LanguageService;
  *
  * @author        Tim Lochmueller <webmaster@fruit-lab.de>
  * @package       TYPO3
- * @subpackage    Tx_Html5videoplayer
+ * @subpackage    Tx_Ableplayer
  */
 class Wizicon
 {
@@ -49,13 +49,13 @@ class Wizicon
     public function proc($wizardItems)
     {
         $LL = $this->includeLocalLang();
-        $wizardItems['plugins_tx_html5videoplayer_pi1'] = [
-            'icon'        => 'EXT:html5videoplayer/Resources/Public/Icons/Wizicon.gif',
+        $wizardItems['plugins_tx_ableplayer_pi1'] = [
+            'icon'        => 'EXT:ableplayer/Resources/Public/Icons/Wizicon.gif',
             'title'       => $this->getLanguage()
                 ->getLLL('list_title', $LL),
             'description' => $this->getLanguage()
                 ->getLLL('list_plus_wiz_description', $LL),
-            'params'      => '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=html5videoplayer_pivideoplayer'
+            'params'      => '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=ableplayer_pivideoplayer'
         ];
 
         return $wizardItems;
@@ -78,7 +78,7 @@ class Wizicon
      */
     public function includeLocalLang()
     {
-        $llFile = ExtensionManagementUtility::extPath('html5videoplayer') . '/Resources/Private/Language/locallang.xml';
+        $llFile = ExtensionManagementUtility::extPath('ableplayer') . '/Resources/Private/Language/locallang.xml';
         /** @var LocallangXmlParser $parser */
         $parser = GeneralUtility::makeInstance(LocallangXmlParser::class);
         $LOCAL_LANG = $parser->getParsedData($llFile, $GLOBALS['LANG']->lang);

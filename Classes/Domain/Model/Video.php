@@ -23,9 +23,9 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
-namespace HVP\Html5videoplayer\Domain\Model;
+namespace BZGA\Ableplayer\Domain\Model;
 
-use HVP\Html5videoplayer\Div;
+use BZGA\Ableplayer\Div;
 use TYPO3\CMS\Core\Resource\FileInterface;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -63,6 +63,13 @@ class Video extends AbstractEntity
      * @var string
      */
     protected $description;
+
+    /**
+    * The Caption
+    *
+    * @var string
+    */
+    protected $caption;
 
     /**
      * The posterimage of the Video
@@ -420,7 +427,7 @@ class Video extends AbstractEntity
      */
     public function getDescription()
     {
-        return $this->description;
+        return $this->retrieveMediaUrl($this->description);
     }
 
     /**
@@ -430,6 +437,24 @@ class Video extends AbstractEntity
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+    
+    /**
+    *
+    * @return string
+    */
+    public function getCaption()
+    {
+    	return $this->retrieveMediaUrl($this->caption);
+    }
+
+    /**
+    *
+    * @param string $caption
+    */
+    public function setCaption($caption)
+    {
+    	$this->caption = $caption;
     }
 
     /**

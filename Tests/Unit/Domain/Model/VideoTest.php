@@ -3,9 +3,9 @@
  * VideoTest
  */
 
-namespace HVP\Html5videoplayer\Tests\Unit\Domain\Model;
+namespace BZGA\Ableplayer\Tests\Unit\Domain\Model;
 
-use HVP\Html5videoplayer\Domain\Model\Video;
+use BZGA\Ableplayer\Domain\Model\Video;
 
 /**
  * VideoTest

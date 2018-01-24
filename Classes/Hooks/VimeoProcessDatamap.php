@@ -1,6 +1,6 @@
 <?php
 
-namespace HVP\Html5videoplayer\Hooks;
+namespace BZGA\Ableplayer\Hooks;
 
 use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -9,7 +9,7 @@ use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
 /**
  * Class VimeoProcessDatamap
  *
- * @package HVP\Html5videoplayer\Hooks
+ * @package BZGA\Ableplayer\Hooks
  */
 class VimeoProcessDatamap
 {
@@ -29,12 +29,12 @@ class VimeoProcessDatamap
     public function processDatamap_postProcessFieldArray($status, $table, $id, &$fieldArray, &$self)
     {
 
-        if ($table == 'tx_html5videoplayer_domain_model_video') {
+        if ($table == 'tx_ableplayer_domain_model_video') {
             $data = $fieldArray;
             if ($status == 'update') {
                 $data = array_merge($GLOBALS['TYPO3_DB']->exec_SELECTgetSingleRow(
                     '*',
-                    'tx_html5videoplayer_domain_model_video',
+                    'tx_ableplayer_domain_model_video',
                     'uid=' . (int)$id
                 ), $data);
             }

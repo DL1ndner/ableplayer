@@ -1,4 +1,4 @@
-{namespace h5v=HVP\Html5videoplayer\ViewHelpers}
+{namespace h5v=BZGA\Ableplayer\ViewHelpers}
 
 <f:comment>
 	<style type="text/css">
@@ -18,18 +18,20 @@
 <div class="video-js-box ">
 	<video
 			id="video_{video.uid}"
-			class="video-js vjs-default-skin"
 			width="{f:if(condition:'{settings.ff.videowidth} > 0', then: settings.ff.videowidth, else: video.minWidth)}"
 			height="{f:if(condition:'{settings.ff.videoheight} > 0', then: settings.ff.videoheight, else: video.minHeight)}"
-			preload="{video.preloadvideo}"<f:if condition="{video.autoplayvideo}"> autoplay</f:if><f:if condition="{video.loopvideo}"> loop</f:if><f:if condition="{video.posterimage}"> poster="{video.posterimage}"</f:if><f:if condition="{video.controlsvideo}"> controls</f:if>
-			data-setup='<h5v:format.wrapCurlyBraces><f:if condition="{video.videoStarttime}">"starttime": {video.videoStarttime},</f:if>"techOrder":[{video.techOrder}], "ytcontrols": true</h5v:format.wrapCurlyBraces>'>
+			preload="{video.preloadvideo}"<f:if condition="{video.autoplayvideo}"> autoplay</f:if><f:if condition="{video.loopvideo}"> loop</f:if><f:if condition="{video.posterimage}"> poster="{video.posterimage}"</f:if><f:if condition="{video.controlsvideo}"> controls="1"</f:if>
+			data-able-player <f:if condition="{video.videoStarttime}">"starttime": {video.videoStarttime} </f:if> 
+			data-debug="1"> 
 		<f:if condition="{video.webmsource}"><source src="{video.webmsource}" type="video/webm" /></f:if>
 		<f:if condition="{video.oggsource}"><source src="{video.oggsource}" type="video/ogg" /></f:if>
 		<f:if condition="{video.mp4source}"><source src="{video.mp4source}" type="video/mp4" /></f:if>
 		<f:if condition="{video.youtube}"><source src="{video.youtube}" type="video/youtube" /></f:if>
         <f:if condition="{video.vimeo}"><source src="{video.vimeo}" type="video/vimeo" /></f:if>
-
+	<f:if condition="{video.caption}"><track kind="captions" src="{video.caption}" /></f:if>
+	<f:if condition="{video.description}"><track kind="descriptions" src="{video.description}" /></f:if>
 	</video>
+
 	<p class="vjs-no-video">
 		<f:if condition="{video.downloadlinks}">
 			<strong>Download "{video.title}"-Video:</strong>
@@ -44,8 +46,5 @@
 			<a href="http://videojs.com/">HTML5 Video Player</a> by VideoJS
 		</f:if>
 	</p>
-	<f:if condition="{video.description}">
-		<f:format.html>{video.description}</f:format.html>
-	</f:if>
 </div>
 <!-- End VideoJS -->

@@ -5,21 +5,21 @@ if (!defined('TYPO3_MODE')) {
 }
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
-    'html5videoplayer_pivideoplayer',
-    'FILE:EXT:html5videoplayer/Configuration/FlexForm/Video.xml'
+    'ableplayer_pivideoplayer',
+    'FILE:EXT:ableplayer/Configuration/FlexForm/Video.xml'
 );
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_html5videoplayer_domain_model_video');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_html5videoplayer_video_content');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ableplayer_domain_model_video');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ableplayer_video_content');
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
-    'html5videoplayer',
+    'ableplayer',
     'Configuration/TypoScript/Videoplayer',
-    'HTML5 Video Player'
+    'AblePlayer'
 );
 
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('html5videoplayer', 'PiVideoplayer', 'Videoplayer');
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('ableplayer', 'PiVideoplayer', 'Videoplayer');
 
 if (TYPO3_MODE == 'BE') {
-    $GLOBALS['TBE_MODULES_EXT']['xMOD_db_new_content_el']['addElClasses'][\HVP\Html5videoplayer\Wizicon::class] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('html5videoplayer') . 'Classes/Wizicon.php';
+    $GLOBALS['TBE_MODULES_EXT']['xMOD_db_new_content_el']['addElClasses'][\BZGA\Ableplayer\Wizicon::class] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('ableplayer') . 'Classes/Wizicon.php';
 }

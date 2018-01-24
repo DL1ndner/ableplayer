@@ -10,7 +10,7 @@
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-namespace HVP\Html5videoplayer\ViewHelpers\Format;
+namespace BZGA\Ableplayer\ViewHelpers\Format;
 
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 

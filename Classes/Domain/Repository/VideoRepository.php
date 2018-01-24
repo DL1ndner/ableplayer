@@ -23,7 +23,7 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
-namespace HVP\Html5videoplayer\Domain\Repository;
+namespace BZGA\Ableplayer\Domain\Repository;
 
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
