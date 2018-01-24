@@ -1,7 +1,7 @@
 # EXT:ableplayer
 
 This fork of lochmueller/html5videoplayer uses ableplayer instead of videojs in order to get an accessible html5 videplayer for TYPO3.
-It could serve as a base for merging both players and for example let the integrator/edito choose between them.
+It could serve as a base for merging both players and for example let the integrator/editor choose between them.
 
 Ableplayer: https://ableplayer.github.io/ableplayer/
 
